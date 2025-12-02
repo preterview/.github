@@ -1,4 +1,4 @@
-# 🎤 프리터뷰(Freeterview) — AI 기반 모의 면접 플랫폼
+# 🎤 프리터뷰(Preterview) — AI 기반 모의 면접 플랫폼
 
 > **"면접 준비의 새로운 기준"**  
 > 음성 인식과 AI 채점으로 실전 같은 면접 연습을 제공하는 웹 기반 플랫폼
@@ -165,7 +165,7 @@ GPT-4 API 호출 (정확도 분석)
 
 ## 📂 프로젝트 구조
 ```
-freeterview/
+preterview/
 ├── frontend/                   # Next.js 프론트엔드
 │   ├── src/
 │   │   ├── app/               # App Router 페이지
