@@ -1,0 +1,58 @@
+name: 🐛 버그 수정
+description: 발견된 버그를 기록하고 수정합니다
+title: "[Bug] "
+labels: ["type: bug", "status: triage"]
+
+body:
+  - type: dropdown
+    id: service
+    attributes:
+      label: 발생 영역
+      options:
+        - Frontend
+        - Backend
+        - AI Engine
+        - Database
+        - Infrastructure
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 버그 설명
+      description: 무엇이 문제인가?
+      placeholder: "질문 등록 시 키워드가 배열이 아닌 문자열로 저장됨"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: 재현 방법
+      placeholder: |
+        1. 질문 등록 페이지 접속
+        2. 키워드 입력
+        3. 저장 버튼 클릭
+        4. DB 확인 시 문자열로 저장됨
+      value: |
+        1. 
+        2. 
+        3. 
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 예상 동작
+      placeholder: "JSONB 배열로 저장되어야 함"
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 에러 로그/스크린샷 (선택)
+      placeholder: "에러 메시지나 스크린샷 첨부"
+      render: shell
