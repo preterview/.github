@@ -1,0 +1,88 @@
+# Type
+- name: "type: bug"
+  color: "d73a4a"
+  description: "버그"
+
+- name: "type: feature"
+  color: "a2eeef"
+  description: "새로운 기능"
+
+- name: "type: enhancement"
+  color: "84b6eb"
+  description: "기능 개선"
+
+- name: "type: documentation"
+  color: "0075ca"
+  description: "문서"
+
+- name: "type: refactor"
+  color: "fbca04"
+  description: "리팩토링"
+
+- name: "type: test"
+  color: "d4c5f9"
+  description: "테스트"
+
+- name: "type: performance"
+  color: "f9d0c4"
+  description: "성능 개선"
+
+# Area
+- name: "area: frontend"
+  color: "e99695"
+  description: "Frontend"
+
+- name: "area: backend"
+  color: "5319e7"
+  description: "Backend"
+
+- name: "area: ai-engine"
+  color: "c5def5"
+  description: "AI Engine"
+
+- name: "area: database"
+  color: "006b75"
+  description: "Database"
+
+- name: "area: infra"
+  color: "ededed"
+  description: "Infrastructure"
+
+- name: "area: api"
+  color: "0e8a16"
+  description: "API"
+
+# Status
+- name: "status: triage"
+  color: "ffffff"
+  description: "검토 필요"
+
+- name: "status: in-progress"
+  color: "fbca04"
+  description: "진행 중"
+
+- name: "status: blocked"
+  color: "d73a4a"
+  description: "블로킹됨"
+
+- name: "status: on-hold"
+  color: "fef2c0"
+  description: "보류"
+
+- name: "status: ready"
+  color: "0e8a16"
+  description: "준비 완료"
+
+# Deployment
+- name: "deploy: staging"
+  color: "fbca04"
+  description: "스테이징 배포"
+
+- name: "deploy: production"
+  color: "0e8a16"
+  description: "프로덕션 배포"
+
+# Security
+- name: "security"
+  color: "d73a4a"
+  description: "보안 이슈"
