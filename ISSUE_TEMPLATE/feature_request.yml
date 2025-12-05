@@ -1,0 +1,64 @@
+name: ✨ 기능 개발
+description: 새로운 기능을 개발합니다
+title: "[Feature] "
+labels: ["type: feature", "status: triage"]
+
+body:
+  - type: dropdown
+    id: service
+    attributes:
+      label: 개발 영역
+      options:
+        - Frontend
+        - Backend
+        - AI Engine
+        - Database
+        - Infrastructure
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature
+    attributes:
+      label: 기능 설명
+      description: 어떤 기능을 개발하나요?
+      placeholder: "질문 카테고리별 필터링 기능"
+    validations:
+      required: true
+
+  - type: textarea
+    id: requirements
+    attributes:
+      label: 요구사항
+      description: 구현해야 할 세부 내용
+      placeholder: |
+        - CS, 기술면접, 인성면접 카테고리 드롭다운
+        - 복수 선택 가능
+        - 선택한 카테고리로 질문 목록 필터링
+      value: |
+        - 
+        - 
+        - 
+    validations:
+      required: true
+
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 완료 조건
+      description: 어떻게 되면 완료인가요?
+      placeholder: |
+        - [ ] 카테고리 필터 UI 구현
+        - [ ] 필터링 API 연동
+        - [ ] 선택 상태 유지
+        - [ ] 테스트 작성
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] 
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 참고사항 (선택)
+      placeholder: "관련 이슈, 참고 문서, 기술 스택 등"
