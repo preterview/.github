@@ -27,6 +27,14 @@
   color: "f9d0c4"
   description: "성능 개선"
 
+- name: "type: style"
+  color: "c2e0c6"
+  description: "코드 포맷팅"
+
+- name: "type: chore"
+  color: "fef2c0"
+  description: "빌드, 설정 파일 수정"
+  
 # Area
 - name: "area: frontend"
   color: "e99695"
