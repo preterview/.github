@@ -1,7 +1,10 @@
 name: ✨ 기능 개발
 description: 새로운 기능을 개발합니다
-title: "[Feature] "
-labels: ["type: feature", "status: triage"]
+title: "feature: "
+labels: ["type: feature"]
+assignees:
+  - arty0928
+type: feature
 
 body:
   - type: dropdown
