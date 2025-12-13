@@ -1,7 +1,10 @@
 name: 🐛 버그 수정
 description: 발견된 버그를 기록하고 수정합니다
-title: "[Bug] "
-labels: ["type: bug", "status: triage"]
+title: "bug: "
+labels: ["type: bug"]
+assignees:
+  - arty0928
+type: bug
 
 body:
   - type: dropdown
