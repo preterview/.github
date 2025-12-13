@@ -5,9 +5,6 @@
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)](https://nextjs.org/)
-[![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat&logo=nestjs&logoColor=white)](https://nestjs.com/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
@@ -59,9 +56,9 @@
 🎯 CS 지식 그래프 매핑
 🎯 개인화 학습 추천
 ```
+<!--
 
 ---
-
 ## 🛠️ 기술 스택
 
 ### **Frontend**
@@ -143,6 +140,7 @@
             │   (GPT-4 채점) │
             └────────────────┘
 ```
+
 
 ### 데이터 플로우
 ```
@@ -236,6 +234,8 @@ Redis 캐시 히트율: > 80%
 에러율: < 0.1%
 자동 스케일링: CPU 70% 기준
 ```
+
+-->
 ---
 
 ## 🔗 링크
