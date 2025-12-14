@@ -22,7 +22,12 @@ jobs:
           curl -s \
             -H "Authorization: token ${{ secrets.ORG_LABEL_SYNC_TOKEN }}" \
             https://api.github.com/orgs/${{ github.repository_owner }}/repos?per_page=100 \
-            | jq -r '.[].full_name' > repos.txt
+          | jq -e 'type == "array"' > /dev/null
+
+          curl -s \
+            -H "Authorization: token ${{ secrets.ORG_LABEL_SYNC_TOKEN }}" \
+            https://api.github.com/orgs/${{ github.repository_owner }}/repos?per_page=100 \
+          | jq -r '.[].full_name' > repos.txt
 
       - name: Sync labels to repositories
         run: |
