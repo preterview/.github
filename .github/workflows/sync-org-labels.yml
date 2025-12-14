@@ -1,0 +1,36 @@
+name: Sync Org Labels
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "labels.yml"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install github-label-sync
+        run: npm install -g github-label-sync
+
+      - name: Fetch organization repositories
+        run: |
+          curl -s \
+            -H "Authorization: token ${{ secrets.ORG_LABEL_SYNC_TOKEN }}" \
+            https://api.github.com/orgs/${{ github.repository_owner }}/repos?per_page=100 \
+            | jq -r '.[].full_name' > repos.txt
+
+      - name: Sync labels to repositories
+        run: |
+          while read repo; do
+            echo "🔄 Syncing labels to $repo"
+            github-label-sync \
+              --access-token ${{ secrets.ORG_LABEL_SYNC_TOKEN }} \
+              --labels labels.yml \
+              --allow-added-labels \
+              $repo
+          done < repos.txt
