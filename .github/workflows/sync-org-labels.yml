@@ -29,8 +29,8 @@ jobs:
           while read repo; do
             echo "🔄 Syncing labels to $repo"
             github-label-sync \
-              --access-token ${{ secrets.ORG_LABEL_SYNC_TOKEN }} \
-              --labels labels.yml \
-              --allow-added-labels \
-              $repo
+            --access-token ${{ secrets.ORG_LABEL_SYNC_TOKEN }} \
+            --labels .github/labels.yml \
+            --allow-added-labels \
+            $repo
           done < repos.txt
