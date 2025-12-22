@@ -1,0 +1,69 @@
+name: Security Scan
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  secret-scan:
+    name: Secret Scan
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check for hardcoded secrets
+        id: secrets
+        run: |
+          # Scan for API keys, tokens, passwords
+          if grep -r -i -E "(api[_-]?key|secret[_-]?key|access[_-]?token|password|private[_-]?key)\s*[:=]\s*['\"][^'\"]{8,}" . \
+            --exclude-dir={node_modules,.git,.next,dist,build,coverage,.turbo,.cache,.swc} \
+            --exclude="*.lock" \
+            --exclude="*.md" \
+            --exclude="*.yml" \
+            --exclude="*.yaml" > secrets.log 2>&1; then
+            echo "found=true" >> $GITHUB_OUTPUT
+          else
+            echo "found=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on PR
+        if: steps.secrets.outputs.found == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let comment = '## Security Scan: Hardcoded Secrets Detected\n\n';
+            comment += 'Found patterns that look like API keys or tokens.\n\n';
+            comment += 'Recommended action:\n';
+            comment += '1. Move to environment variables (.env.local)\n';
+            comment += '2. Add .env.local to .gitignore\n';
+            comment += '3. Regenerate keys if already pushed\n\n';
+
+            let secretsLog = '';
+            if (fs.existsSync('secrets.log')) {
+              secretsLog = fs.readFileSync('secrets.log', 'utf8').slice(0, 1000);
+              comment += '<details>\n<summary>Detected patterns</summary>\n\n';
+              comment += '```\n' + secretsLog + '\n```\n';
+              comment += '</details>\n';
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: comment
+            });
+
+      - name: Fail if secrets found
+        if: steps.secrets.outputs.found == 'true'
+        run: |
+          echo "Hardcoded secrets detected"
+          exit 1

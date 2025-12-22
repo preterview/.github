@@ -1,0 +1,105 @@
+language: ko
+
+reviews:
+  profile: 'chill'
+
+  # 변경 요청 없이 제안만 제공
+  request_changes_workflow: false
+
+  # PR 요약 제공
+  high_level_summary: true
+  poem: false
+  review_status: true
+  collapse_walkthrough: false
+
+  # 자동 리뷰 설정
+  auto_review:
+    enabled: true
+    drafts: false
+    base_branches:
+      - main
+      - develop
+
+  # CONTRIBUTING.md 기반 리뷰 지침
+  path_instructions:
+    - path: '**/*.ts'
+      instructions: |
+        **ESLint 규칙 준수 확인:**
+        - any 타입 사용 금지 (명시적 타입 선언)
+        - unused imports 제거 확인
+        - console.log는 warn, error, info만 허용
+        - 사용하지 않는 변수는 _prefix 사용
+
+        **코드 스타일:**
+        - var 대신 const/let 사용
+        - prefer-const 적용
+        - 중복 import 제거
+
+    # React 컴포넌트
+    - path: '**/*.tsx'
+      instructions: |
+        **React 규칙**
+        - 함수 컴포넌트 + 화살표 함수
+        - Props 타입 명시적 정의
+        - 훅 순서: useState → useQuery → useDispatch → useEffect
+        - Early return 패턴 사용
+        - React hooks 규칙 엄격 적용
+
+        **Import 순서 (simple-import-sort):**
+        1. react, react-*, next
+        2. 외부 라이브러리 (@로 시작하지 않는)
+        3. 내부 절대 경로 (@/)
+        4. 상대 경로 (./)
+        5. CSS 파일
+
+        **컴포넌트 구조:**
+        - Hooks → 이벤트 핸들러 → 렌더 함수 → Return
+
+    # 설정 파일
+    - path: '**/*.config.*'
+      instructions: |
+        설정 파일은 require/console 허용
+
+    # 스타일
+    - path: '**/*.css'
+      instructions: |
+        Tailwind CSS 유틸리티 클래스 우선 사용
+
+# 채팅 활성화
+chat:
+  auto_reply: true
+
+# 리뷰 제외 (빌드 산출물, 자동생성 파일)
+reviews_exclude:
+  - '**/*.json'
+  - '**/*.lock'
+  - '**/dist/**'
+  - '**/build/**'
+  - '**/node_modules/**'
+  - '**/.next/**'
+  - '**/coverage/**'
+  - '**/*.min.js'
+  - '**/*.min.css'
+  - 'next-env.d.ts'
+  - '**/.turbo/**'
+  - '**/.cache/**'
+  - '**/.swc/**'
+
+# 커밋 메시지 검증
+commit_message:
+  enabled: true
+  pattern: "^(feat|fix|refactor|docs|style|test|chore|perf):\\s.{1,50}$"
+
+# 성능 검토
+performance:
+  enabled: true
+
+# 코드 복잡도
+complexity:
+  enabled: true
+  threshold: 20
+
+# 보안 스캔
+security:
+  enabled: true
+  severity_threshold: 'high'
